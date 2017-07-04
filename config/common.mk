@@ -157,6 +157,18 @@ ifneq ($(TARGET_DISABLE_CMSDK), true)
 include vendor/cm/config/cmsdk_common.mk
 endif
 
+# Google PinYin
+PRODUCT_COPY_FILES += $(shell test -d vendor/cm/prebuilt/google/app/GooglePinYin && \
+    find vendor/cm/prebuilt/google/app/GooglePinYin -name '*.apk' \
+    -printf '%p:system/app/GooglePinYin/%f ')
+PRODUCT_COPY_FILES += $(shell test -d vendor/cm/prebuilt/google/app/GooglePinYin && \
+    find vendor/cm/prebuilt/google/app/GooglePinYin -name '*.so' \
+    -printf '%p:system/app/GooglePinYin/lib/arm/%f ')
+
+#ForceStop
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/ForceStop/ForceStop.apk:system/app/ForceStop/ForceStop.apk
+
 # Required CM packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
