@@ -157,6 +157,10 @@ ifneq ($(TARGET_DISABLE_CMSDK), true)
 include vendor/cm/config/cmsdk_common.mk
 endif
 
+# Phonelocation!
+PRODUCT_COPY_FILES +=  \
+    vendor/cm/prebuilt/common/media/location/suda-phonelocation.dat:system/media/location/suda-phonelocation.dat
+
 # Google PinYin
 PRODUCT_COPY_FILES += $(shell test -d vendor/cm/prebuilt/google/app/GooglePinYin && \
     find vendor/cm/prebuilt/google/app/GooglePinYin -name '*.apk' \
@@ -197,6 +201,7 @@ PRODUCT_PACKAGES += \
     Trebuchet \
     AudioFX \
     CMFileManager \
+    PhoneLocationProvider \
     Eleven \
     LockClock \
     CMSettingsProvider \
